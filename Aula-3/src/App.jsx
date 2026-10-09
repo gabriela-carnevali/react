@@ -12,14 +12,21 @@ function App() {
 
   // useState começa a contagem de salvamento em zero
   const [totalItens, setTotalItens] = useState(0)
+  const [totalValor, setTotalValor] = useState(0)
 
-  function adicionarAoPedido(quantidade) {
+  function adicionarAoPedido(quantidade, preco) {
     setTotalItens(totalItens + quantidade)
+    setTotalValor(totalValor + quantidade * preco)
+  }
+
+  function limparPedido() {
+    setTotalItens(0)
+    setTotalValor(0)
   }
 
   return (
     <main className="app">
-      <Header totalItens={totalItens}/>
+      <Header totalItens={totalItens} totalValor={totalValor} onLimpar={limparPedido}/>
       <p>Cardápio com {cardapio.length} itens</p>
       <section className="cardapio">
         {cardapio.map((prato) => (

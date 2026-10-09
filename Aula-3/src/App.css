@@ -68,6 +68,7 @@
 .quantidade {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
 }
 .quantidade button {
@@ -86,13 +87,22 @@
 }
 
 .btn-adicionar,
-.btn-secundario {
+.btn-descricao,
+.btn-curtir {
   border: none;
   border-radius: 8px;
   padding: 10px;
   font-weight: 700;
   cursor: pointer;
+}
+.acoes-secundarias {
+  display: flex;
+  gap: 8px;
   margin-top: auto;
+}
+.btn-descricao,
+.btn-curtir {
+  flex: 1;
 }
 .btn-adicionar {
   background: #e4002b;
@@ -101,7 +111,8 @@
 .btn-adicionar:hover {
   background: #b80023;
 }
-.btn-secundario {
+.btn-descricao,
+.btn-curtir {
   background: #f1f1f4;
   color: #333;
 }

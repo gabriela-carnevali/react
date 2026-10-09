@@ -38,4 +38,18 @@ export const cardapio = [
     categoria: "Sobremesa",
     descricao: "Simples mas delicioso",
   },
+  {
+    id: 6,
+    nome: "Suco de caju",
+    preco: 9.5,
+    categoria: "Bebida",
+    descricao: "Suco natural de caju, gelado.",
+  },
+  {
+    id: 7,
+    nome: "Brigadeiro",
+    preco: 6.0,
+    categoria: "Sobremesa",
+    descricao: "Brigadeiro de chocolate belga.",
+  },
 ];
