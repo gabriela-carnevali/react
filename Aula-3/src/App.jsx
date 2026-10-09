@@ -1,51 +1,27 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import CardPrato from "./components/CardPrato";
+import { cardapio } from "./data/cardapio";
 import Footer from "./components/Rodape";
+import "./App.css" 
 
-const cardapio = [
-  {
-    id: 1,
-    nome: "Feijoada",
-    preco: 42.9,
-    categoria: "Prato principal",
-    descricao: "Com feijão preto e linguiça",
-  },
-  {
-    id: 2,
-    nome: "Moqueca",
-    preco: 49.9,
-    categoria: "Prato principal",
-    descricao: "Com carne de primeira qualidade",
-  },
-  {
-    id: 3,
-    nome: "Pudim",
-    preco: 15.0,
-    categoria: "Sobremesa",
-    descricao: "Doce para tornar a vida feliz",
-  },
-  {
-    id: 4,
-    nome: "Lasanha",
-    preco: 39.9,
-    categoria: "Prato principal",
-    descricao: "Lasanha ao molho sugo",
-  },
-  {
-    id: 5,
-    nome: "Sorvete de Flocos",
-    preco: 10.5,
-    categoria: "Sobremesa",
-    descricao: "Simples mas delicioso",
-  },
-];
 
 function App() {
+  // O total fica no App porque DOIS componentes precisam dele:
+  // o Header mostra e o CardPrato altera. O estado mora no "pai comum".
+
+  // useState começa a contagem de salvamento em zero
+  const [totalItens, setTotalItens] = useState(0)
+
+  function adicionarAoPedido(quantidade) {
+    setTotalItens(totalItens + quantidade)
+  }
+
   return (
     <main className="app">
-      <Header />
+      <Header totalItens={totalItens}/>
+      <p>Cardápio com {cardapio.length} itens</p>
       <section className="cardapio">
-        <p>Cardápio com {cardapio.length} itens</p>
         {cardapio.map((prato) => (
           <CardPrato
             key={prato.id}
@@ -53,6 +29,7 @@ function App() {
             preco={prato.preco}
             descricao={prato.descricao}
             categoria={prato.categoria}
+            onAdicionar={adicionarAoPedido}
           />
         ))}
       </section>
